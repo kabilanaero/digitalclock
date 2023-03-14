@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date object</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <section class="sec">
+        <div class="container">
+            <div class="card">
+                <div class="row">
+                    <div class="content">
+                        <span>Date</span>
+                        <span>Month</span>
+                        <span>Year</span>
+                    </div>
+                    <div class="show">
+                        <span id="date"></span>
+                        <span id="month"></span>
+                        <span id="year"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="content">
+                        <span>Hour</span>
+                        <span>Minute</span>
+                        <span>Seconds</span>
+                    </div>
+                    <div class="show">
+                        <span id="hr">00</span>:
+                        <span id="min">00</span>:
+                        <span id="sec">00</span>
+                    </div>
+                </div>
+                <div class="row row1">
+                    <div class="show1">
+                        <div class="type">
+                            <input type="radio" name="sun" id="sun">
+                        </div>
+                        <div class="head">
+                            <h4 class="head-1">SUN</h4>
+                        </div>
+                    </div>
+                    <div class="show1">
+                        <div class="type">
+                            <input type="radio" name="mon" id="mon">
+                        </div>
+                        <div class="head">
+                            <h4 class="head-1">MON</h4>
+                        </div>
+                    </div>
+                    <div class="show1">
+                        <div class="type">
+                            <input type="radio" name="tue" id="tue">
+                        </div>
+                        <div class="head">
+                            <h4 class="head-1">TUE</h4>
+                        </div>
+                    </div>
+                    <div class="show1">
+                        <div class="type">
+                            <input type="radio" name="wed" id="wed">
+                        </div>
+                        <div class="head">
+                            <h4 class="head-1">WED</h4>
+                        </div>
+                    </div>
+                    <div class="show1">
+                        <div class="type">
+                            <input type="radio" name="thu" id="thu">
+                        </div>
+                        <div class="head">
+                            <h4 class="head-1">THUES</h4>
+                        </div>
+                    </div>
+                    <div class="show1">
+                        <div class="type">
+                            <input type="radio" name="fri" id="fri">
+                        </div>
+                        <div class="head">
+                            <h4 class="head-1">FRI</h4>
+                        </div>
+                    </div>
+                    <div class="show1">
+                        <div class="type">
+                            <input type="radio" name="sat" id="sat">
+                        </div>
+                        <div class="head">
+                            <h4 class="head-1">SAT</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="show1">
+                        <div class="type">
+                            <input type="radio" name="am" id="am">
+                        </div>
+                        <div class="head">
+                            <h4 class="head-1">AM</h4>
+                        </div>
+                    </div>
+                    <div class="show1">
+                        <div class="type1">
+                            <input type="radio" name="pm" id="pm">
+                        </div>
+                        <div class="head">
+                            <h4 class="head-1">PM</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+	let dateShow = document.getElementById('date');
+let monthShow = document.getElementById('month');
+let yearShow = document.getElementById('year')
+
+
+let date = new Date();
+let todayDate = date.getDate();
+var todayMonth = date.getMonth() + 1;
+todayMonth = todayMonth < 10 ? '0'+todayMonth : todayMonth;
+let todayYear = date.getFullYear();
+ dateShow.innerText = todayDate;
+ monthShow.innerText = todayMonth;
+ yearShow.innerText = todayYear;
+
+ let hours = document.getElementById("hr") 
+ let mini = document.getElementById('min')
+ let sec = document.getElementById('sec')
+
+
+
+function tym(){
+  let currentTime = new Date()
+current = currentTime.getHours()
+minitue = currentTime.getMinutes()
+second = currentTime.getSeconds()
+minitue = minitue < 10 ? '0'+minitue : minitue;
+second = second < 10 ? '0'+second : second;
+  hours.innerText = current;
+  mini.innerText = minitue;
+  sec.innerText = second;
+}
+setInterval(tym, 1000)
+                                
+let currentDay = date.getDay();
+let currentHour = date.getHours();
+
+let sun = document.getElementById('sun')
+let mon = document.getElementById('mon')
+let tue = document.getElementById('tue')
+let wed = document.getElementById('wed')
+let thu = document.getElementById('thu')
+let fri = document.getElementById('fri')
+let sat = document.getElementById('sat')
+let am = document.getElementById('am')
+let pm = document.getElementById('pm')
+
+
+
+if(currentHour < 12){
+    am.setAttribute('checked', 'checked');
+}
+else{
+    pm.setAttribute('checked', 'checked');
+}
+
+
+
+switch(currentDay){
+    case 0:
+        sun.setAttribute('checked', 'checked');
+        break;
+    case 1:
+        mon.setAttribute('checked', 'checked');
+        break;
+    case 2:
+        tue.setAttribute('checked', 'checked');
+        break;
+    case 3:
+        wed.setAttribute('checked', 'checked');
+        break;
+    case 4:
+        thu.setAttribute('checked', 'checked');
+        break;
+    case 5:
+        fri.setAttribute('checked', 'checked');
+        break;
+    case 6:
+        sat.setAttribute('checked', 'checked'); 
+        break;
+}
+	
+	</script>
+</body>
+
+</html>
